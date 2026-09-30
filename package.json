@@ -1,0 +1,66 @@
+{
+  "name": "tarkov-helper",
+  "version": "0.1.0",
+  "description": "逃离塔科夫桌面助手：仪表盘、互动地图、物品价格、任务、BTR 预测（数据来自 tarkov.dev）",
+  "author": "penguinHH",
+  "main": "./out/main/index.js",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "dist": "electron-vite build && electron-builder --win"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.0",
+    "electron-vite": "^2.3.0",
+    "leaflet": "^1.9.4",
+    "vite": "^5.4.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "build": {
+    "appId": "local.tarkov-helper",
+    "productName": "Tarkov Helper",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "extraFiles": [
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Tarkov Helper",
+      "artifactName": "TarkovHelper-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "TarkovHelper-Portable-${version}.${ext}"
+    }
+  },
+  "allowScripts": {
+    "electron@33.4.11": true,
+    "esbuild@0.21.5": true
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/penguinHH/tarkov-helper.git"
+  },
+  "homepage": "https://github.com/penguinHH/tarkov-helper"
+}
