@@ -46,7 +46,9 @@ watch(
 // 桌面端事件（浏览器里单独打开页面时 window.desktop 不存在）
 const desktop = window.desktop
 if (desktop) {
-  desktop.onPosition((p) => (state.player = p))
+  desktop.onPosition((p) => {
+    state.player = p
+  })
   desktop.onRaid((r) => {
     if (r.map) state.raidMap = r.map
     // 新战局：地图/编号变化时重置计时；GameStarted 到来时写入开始时间
@@ -62,7 +64,9 @@ if (desktop) {
     state.sessionMode = mode
     if (state.autoMode && MODES.some((m) => m.id === mode)) state.gameMode = mode
   })
-  desktop.onWatchStatus((s) => (state.watchStatus = { ...state.watchStatus, [s.source]: s }))
+  desktop.onWatchStatus((s) => {
+    state.watchStatus = { ...state.watchStatus, [s.source]: s }
+  })
 }
 
 // ---------- 任务进度 ----------

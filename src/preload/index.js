@@ -1,7 +1,10 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
 const on = (channel) => (cb) => {
-  const listener = (_e, payload) => cb(payload)
+  // 不把回调的返回值带回来：返回值若含 Vue 响应式对象，跨上下文复制会抛出「could not be cloned」
+  const listener = (_e, payload) => {
+    cb(payload)
+  }
   ipcRenderer.on(channel, listener)
   return () => ipcRenderer.removeListener(channel, listener)
 }
