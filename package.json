@@ -1,6 +1,6 @@
 {
   "name": "tarkov-helper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "逃离塔科夫桌面助手：仪表盘、互动地图、物品价格、任务、BTR 预测（数据来自 tarkov.dev）",
   "author": "penguinHH",
   "main": "./out/main/index.js",
